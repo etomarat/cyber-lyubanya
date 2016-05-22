@@ -41,7 +41,7 @@ let forward = ()=> {
 let backward = ()=> {
   return stop()
     .then(writePromise.bind(null, pins.leftBackward, 1))
-    .then(writePromise.bind(null, pins.leftBackward, 1));
+    .then(writePromise.bind(null, pins.rightBackward, 1));
 };
 
 let left = ()=> {
