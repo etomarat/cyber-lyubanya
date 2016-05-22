@@ -9,6 +9,7 @@ const myTelegramChatId = '114418853';
 let ngrockPromises = (opts)=> {
   let promise = new Promise((resolve, reject) => {
     ngrok.connect(opts, function (err, url) {
+      console.log(err, url);
       return err
           ? reject(err)
           : resolve(url);
@@ -49,7 +50,7 @@ let portForwarding = ()=> {
 
   return Promise.all(ports.map(port =>{
     return ngrockPromises(port);
-  })).then(telegramBot);
+  })).then(telegramBot).catch(console.log);
 
 };
 
