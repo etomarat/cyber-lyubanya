@@ -1,7 +1,7 @@
 'use strict';
 
 let gpio = require('pi-gpio');
-let lodash = require('lodash');
+let _ = require('lodash');
 
 const pins = {
   leftForward: 35,
