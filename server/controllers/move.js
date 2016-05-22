@@ -1,6 +1,6 @@
 'use strict';
 
-let motor;
+let motor = require('../motor');
 
 let move = socket => {
   socket.on('move', dir => {
