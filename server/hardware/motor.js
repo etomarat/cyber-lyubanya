@@ -17,7 +17,7 @@ let writePromise = (pin, val) => {
         reject(err)
       };
       gpio.write(pin, val, () => {
-        gpio.close(pin);
+        //gpio.close(pin);
         resolve(true);
       });
     });
