@@ -54,8 +54,8 @@ let right = ()=> {
 
 module.exports = {
   stop: stop,
-  forward: forward,
-  backward: backward,
+  up: forward,
+  down: backward,
   left: left,
   right: right
 };
