@@ -8,9 +8,7 @@ const myTelegramChatId = '114418853';
 
 let ngrockPromises = (opts)=> {
   let promise = new Promise((resolve, reject) => {
-    console.log(opts);
     ngrok.connect(opts, function (err, url) {
-      console.log(err, url);
       return err
           ? reject(err)
           : resolve(url);
@@ -21,7 +19,6 @@ let ngrockPromises = (opts)=> {
 };
 
 let telegramBot = (links)=> {
-  console.log(links);
   let bot = new TelegramBot(telegramAuthtoken, {polling: true});
 
   bot.on('message', function (msg) {
@@ -34,14 +31,14 @@ let telegramBot = (links)=> {
 ssh: ${links[1]}`;
   bot.sendMessage(myTelegramChatId, answer);
 
-  return answer;
+  return Promise.resolve(answer);
 };
 
 let portForwarding = ()=> {
   let ports = [
     {
       proto: 'http',
-      addr: 80,
+      addr: 8010,
       authtoken: ngrokAuthtoken
     },
     {

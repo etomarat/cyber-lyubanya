@@ -1,6 +1,6 @@
 $(function() {
 
-  var move = io.connect('http://localhost:8010/move');
+  var move = io.connect('/move');
 
   var joystick = nipplejs.create({
     //zone: document.getElementById('dynamic'),
