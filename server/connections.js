@@ -8,6 +8,7 @@ const myTelegramChatId = '114418853';
 
 let ngrockPromises = (opts)=> {
   let promise = new Promise((resolve, reject) => {
+    ngrok.disconnect();
     ngrok.connect(opts, function (err, url) {
       return err
           ? reject(err)
@@ -22,8 +23,9 @@ let telegramBot = (links)=> {
   let bot = new TelegramBot(telegramAuthtoken, {polling: true});
 
   bot.on('message', function (msg) {
-    let chatId = msg.chat.id;
-    bot.sendMessage(chatId, chatId);
+    //let chatId = msg.chat.id;
+    bot.sendMessage(chatId, 'reconnecting..');
+    portForwarding();
   });
 
   let answer = `

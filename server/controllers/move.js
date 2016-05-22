@@ -4,7 +4,7 @@ let motor;
 
 let move = socket => {
   socket.on('forward', (from, cond) => {
-    console.log(cond);
+    console.log(from, cond);
     //motor.forward(cond);
   });
 };
