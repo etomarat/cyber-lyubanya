@@ -32,6 +32,8 @@ let telegramBot = (links)=> {
     http: ${links[0]}
 ssh: ${links[1]}`;
   bot.sendMessage(myTelegramChatId, answer);
+  
+  return answer;
 };
 
 let portForwarding = ()=> {
