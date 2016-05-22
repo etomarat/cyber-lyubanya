@@ -12,5 +12,5 @@ let port = 8010;
 app.use(express.static('client/assets'));
 
 server.listen(port);
-console.log(`Server listennning on por: ${port}`);
+console.log(`Server listennning on port: ${port}`);
 connections.portForwarding();

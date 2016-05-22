@@ -19,6 +19,7 @@ let ngrockPromises = (opts)=> {
 };
 
 let telegramBot = (links)=> {
+  console.log(links);
   let bot = new TelegramBot(telegramAuthtoken, {polling: true});
 
   bot.on('message', function (msg) {
