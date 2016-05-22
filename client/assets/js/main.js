@@ -12,8 +12,11 @@ $(function() {
     //console.log(data);
   })
   .on('dir', (e, data) => {
-    move.emit('forward', true);
+    move.emit('move', data.direction.angle);
     console.log(data);
+  })
+  .on('end', e => {
+    move.emit('move', 'stop');
   });
 
 });
