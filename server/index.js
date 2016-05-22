@@ -7,7 +7,7 @@ let socketio = require('socket.io')(server);
 let routes = require('./routes')(app, socketio);
 let connections = require('./connections');
 
-let port = 8010;
+let port = 80;
 
 app.use(express.static('client/assets'));
 

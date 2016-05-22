@@ -1,9 +1,10 @@
 'use strict';
-var ngrok = require('ngrok');
-var TelegramBot = require('node-telegram-bot-api');
+let ngrok = require('ngrok');
+let TelegramBot = require('node-telegram-bot-api');
 
 const ngrokAuthtoken = '3M68jXE5tAqjGcgx1eS1c_5SknsdRmm44uv778yjBub';
 const telegramAuthtoken = '161454266:AAH4XdTg9zqZ7U1iPQ_PciniGXH4LfeX6j8';
+const myTelegramChatId = '114418853';
 
 let ngrockPromises = (opts)=> {
   let promise = new Promise((resolve, reject) => {
@@ -17,13 +18,18 @@ let ngrockPromises = (opts)=> {
   return promise;
 };
 
-let telegramBot = ()=> {
-  let bot = new TelegramBot(telegramAuthtoken);
+let telegramBot = (links)=> {
+  let bot = new TelegramBot(telegramAuthtoken, {polling: true});
 
   bot.on('message', function (msg) {
-    var chatId = msg.chat.id;
+    let chatId = msg.chat.id;
     bot.sendMessage(chatId, chatId);
   });
+
+  let answer = `
+    http: ${links[0]}
+ssh: ${links[1]}`;
+  bot.sendMessage(myTelegramChatId, answer);
 };
 
 let portForwarding = ()=> {
@@ -42,10 +48,7 @@ let portForwarding = ()=> {
 
   return Promise.all(ports.map(port =>{
     return ngrockPromises(port);
-  })).then(links => {
-    console.log(links);
-    telegramBot();
-  });
+  })).then(telegramBot);
 
 };
 
