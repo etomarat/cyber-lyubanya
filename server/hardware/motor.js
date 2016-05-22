@@ -27,7 +27,7 @@ let writePromise = (pin, val) => {
 let stop = ()=> {
   let allPins = _.values(pins);
   let stopArr = allPins.map(pin => {
-    return writePromise(pin, 0);
+    return gpio.close(pin);
   });
   return Promise.all(stopArr);
 };
