@@ -8,6 +8,7 @@ const myTelegramChatId = '114418853';
 
 let ngrockPromises = (opts)=> {
   let promise = new Promise((resolve, reject) => {
+    console.log(1);
     ngrok.connect(opts, function (err, url) {
       console.log(err, url);
       return err
@@ -32,7 +33,7 @@ let telegramBot = (links)=> {
     http: ${links[0]}
 ssh: ${links[1]}`;
   bot.sendMessage(myTelegramChatId, answer);
-  
+
   return answer;
 };
 

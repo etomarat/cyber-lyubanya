@@ -13,7 +13,5 @@ app.use(express.static('client/assets'));
 
 server.listen(port);
 
-let forwarding = connections.portForwarding();
-
-console.log(forwarding);
+let forwarding = connections.portForwarding().then(console.log);
 console.log(`Server listennning on port: ${port}`);
