@@ -31,7 +31,7 @@ let telegramBot = (links)=> {
   let answer = `👋Привет! Жду тебя [тут](${links[0]})
 _(а если нужен ssh, то используй: ${links[1]})_`;
 
-  return bot.sendMessage(myTelegramChatId, answer, 'Markdown');
+  return bot.sendMessage(myTelegramChatId, answer);
 };
 
 let portForwarding = ()=> {
