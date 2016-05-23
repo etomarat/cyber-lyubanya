@@ -23,17 +23,15 @@ let telegramBot = (links)=> {
   let bot = new TelegramBot(telegramAuthtoken, {polling: true});
 
   bot.on('message', function (msg) {
-    //let chatId = msg.chat.id;
+    let chatId = msg.chat.id;
     bot.sendMessage(chatId, 'reconnecting..');
     portForwarding();
   });
 
-  let answer = `
-    http: ${links[0]}
-ssh: ${links[1]}`;
-  bot.sendMessage(myTelegramChatId, answer);
+  let answer = `👋Привет! Жду тебя [тут](${links[0]})
+_(а если нужен ssh, то используй: ${links[1]})_`;
 
-  return Promise.resolve(answer);
+  return bot.sendMessage(myTelegramChatId, answer, 'Markdown');
 };
 
 let portForwarding = ()=> {
